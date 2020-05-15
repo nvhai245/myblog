@@ -40,7 +40,7 @@ function App(props) {
         <div className="content content--canvas">
           <Router>
             <div className={classes.appBody}>
-              <AppBar position="static" style={{ backgroundColor: "#93afd9", padding: 0 }}>
+              <AppBar position="static" style={{ backgroundColor: "transparent", padding: 0 }}>
                 <Toolbar variant="dense">
                   <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                     <MenuIcon />

@@ -3,8 +3,8 @@ package usercontroller
 import (
 	"fmt"
 	"log"
-	dbconnect "my-blog/server/controllers/db"
-	model "my-blog/server/models"
+	dbconnect "github.com/nvhai245/myblog/server/controllers/db"
+	model "github.com/nvhai245/myblog/server/models"
 	"net/http"
 	"time"
 

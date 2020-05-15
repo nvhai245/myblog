@@ -1,0 +1,59 @@
+$bezel: #1e1e1e;
+$color: #14fdce;
+$background: #031e11;
+
+@import url("https://fonts.googleapis.com/css?family=PT+Mono");
+
+.typing {
+  color: $color;
+}
+
+.card {
+  max-width: 100%;
+  margin-bottom: 10%;
+  transform: translate(0, 0);
+  width: 100%;
+  height: 100%;
+  padding: 1em;
+  overflow: hidden;
+  color: $color;
+  background-color: #031e11;
+  border-radius: 1em;
+  box-shadow: inset 0 0 1em 0 darken($background, 4%);
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+  }
+
+  &::before {
+    background: linear-gradient(
+      to bottom,
+      transparentize($bezel, 0.8),
+      transparentize($bezel, 0.8) 50%,
+      transparentize($bezel, 0.6) 50%,
+      transparentize($bezel, 0.6)
+    );
+    background-size: 100% 2px;
+  }
+  &::after {
+    opacity: 0;
+    background: rgba(18, 16, 16, 0.1);
+    animation: flicker 0.2s infinite;
+  }
+  @keyframes flicker {
+    $steps: 25;
+    @for $i from 0 through $steps {
+      #{percentage($i*(1/$steps))} {
+        opacity: random();
+      }
+    }
+  }
+}

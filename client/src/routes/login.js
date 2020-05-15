@@ -44,6 +44,7 @@ function Login(props) {
                 setErrorMessage(false);
                 let { data } = response;
                 props.authorize(data);
+                
             })
             .catch(function (error) {
                 //handle error
@@ -62,10 +63,6 @@ function Login(props) {
                 </Typography>
                 }
             </Paper>
-            <button className="waves-effect waves-light btn" type="button" onClick={handleAuthorize}>Authorize</button>
-            <pre>
-                {JSON.stringify(props.authorization)}
-            </pre>
         </div>
     )
 }

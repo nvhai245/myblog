@@ -1,10 +1,10 @@
 package main
 
 import (
-	commentcontroller "my-blog/server/controllers/comment"
-	_ "my-blog/server/controllers/db"
-	postcontroller "my-blog/server/controllers/post"
-	usercontroller "my-blog/server/controllers/user"
+	commentcontroller "github.com/nvhai245/myblog/server/controllers/comment"
+	_ "github.com/nvhai245/myblog/server/controllers/db"
+	postcontroller "github.com/nvhai245/myblog/server/controllers/post"
+	usercontroller "github.com/nvhai245/myblog/server/controllers/user"
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
@@ -17,6 +17,11 @@ func main() {
 	app := echo.New()
 	app.Use(middleware.Logger())
 	app.Use(middleware.Recover())
+	app.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+		AllowOrigins: []string{"*"},
+		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
+		AllowCredentials: true,
+	  }))
 	app.Use(middleware.StaticWithConfig(middleware.StaticConfig{
 		Root:  "client/build",
 		HTML5: true,

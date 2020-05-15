@@ -17,13 +17,9 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import PostOptions from './PostOptions';
+import './PostCard.scss';
 
 const useStyles = makeStyles(theme => ({
-  card: {
-    maxWidth: "100%",
-    marginBottom: "10%",
-    backgroundImage: `url(${paperTexture})`
-  },
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
@@ -52,8 +48,9 @@ export default function PostCard(props) {
   };
 
   return (
-    <Card className={classes.card}>
-      <CardHeader
+    <div className="card">
+    <Card style={{background: "#031e11"}}>
+      <CardHeader className="typing"
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
             {props.post.author}
@@ -65,8 +62,9 @@ export default function PostCard(props) {
         title={props.post.title}
         titleTypographyProps={{variant: "h5", style: {fontFamily: 'Lobster, cursive', color: "#58c1d1"}}}
         subheader={`${props.post.created_at}${props.post.updated_at !== "" ? `(Updated ${props.post.updated_at})` : ""}`}
+        subheaderTypographyProps={{color: "#14fdce"}}
       />
-      <CardContent>
+      <CardContent className="typing">
         <div dangerouslySetInnerHTML={{ __html: props.post.text }} />
       </CardContent>
       <CardActions disableSpacing>
@@ -93,5 +91,6 @@ export default function PostCard(props) {
         </CardContent>
       </Collapse>
     </Card>
+    </div>
   );
 }
