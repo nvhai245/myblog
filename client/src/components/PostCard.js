@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
     transform: 'rotate(180deg)',
   },
   avatar: {
-    backgroundColor: red[500],
+    fontSize: "2rem",
   },
 }));
 
@@ -48,13 +48,14 @@ export default function PostCard(props) {
   };
 
   return (
-    <div className="card">
-    <Card style={{background: "#031e11"}}>
+    <Card className="card" style={{background: "#031e11"}}>
       <CardHeader className="typing"
         avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            {props.post.author}
-          </Avatar>
+          // <Avatar aria-label="recipe" className={classes.avatar}>
+            <div className={classes.avatar}>
+              {`[${props.post.author}]`}
+            </div>
+          // </Avatar>
         }
         action={
           <PostOptions post={props.post}/>
@@ -91,6 +92,5 @@ export default function PostCard(props) {
         </CardContent>
       </Collapse>
     </Card>
-    </div>
   );
 }

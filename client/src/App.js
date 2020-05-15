@@ -34,6 +34,39 @@ const useStyles = makeStyles(theme => ({
 
 function App(props) {
   const classes = useStyles();
+  useEffect(() => {
+    (function() {
+
+      'use strict';
+    
+      let element;
+      let string = ""; 
+      let length = 0;
+    
+      element = document.querySelector('.typing');
+      if (element) {
+        string  = element.innerText;
+      length  = string.length;
+      }
+    
+      function timer(delay, repetitions) {
+        var n, i;
+        
+        n = 0;
+        i = window.setInterval(function () {
+          if (element) {
+            element.innerText = string.substring(0, n);
+            if (n++ === repetitions) {
+              window.clearInterval(i);
+            }
+          }
+        }, delay);
+      }
+    
+      timer(100, length);
+    
+    })();
+  })
   return (
     <div className={classes.root}>
       <div className={classes.canvas}>
